@@ -3,60 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatBot Framework — Multi-LLM Chat</title>
+    <title>ChatBot Framework</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <header class="chat-header">
-            <div class="header-left">
-                <span class="logo">🤖</span>
-                <h1>ChatBot Framework</h1>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🤖 ChatBot</h2>
+                <button id="newChatBtn" title="New Chat">+</button>
             </div>
-            <div class="header-right">
-                <div class="model-selector">
-                    <label for="modelSelect">Model:</label>
-                    <select id="modelSelect">
-                        <option value="mimo-v2.5" selected>MiMo V2.5</option>
-                        <option value="mimo-v2">MiMo V2</option>
-                        <option value="claude-4">Claude 4 Opus</option>
-                        <option value="gpt-5">GPT-5</option>
-                        <option value="llama-4">Llama 4 Maverick</option>
-                        <option value="gemini-2">Gemini 2.5 Pro</option>
-                    </select>
+            <div class="model-selector">
+                <label for="modelSelect">Personality</label>
+                <select id="modelSelect">
+                    <option value="helpful">🟢 Helpful Assistant</option>
+                    <option value="pirate">🏴‍☠️ Pirate Captain</option>
+                    <option value="wizard">🧙 Wizard Sage</option>
+                    <option value="robot">🤖 Robot Logic</option>
+                    <option value="poet">📜 Poetic Soul</option>
+                    <option value="detective">🔍 Detective</option>
+                </select>
+            </div>
+            <div id="chatHistory" class="chat-history"></div>
+            <div class="sidebar-footer">
+                <button id="clearAllBtn">🗑️ Clear All</button>
+            </div>
+        </aside>
+        <main class="chat-main">
+            <div class="chat-header">
+                <h3 id="chatTitle">New Chat</h3>
+                <span id="modelName" class="model-badge">Helpful Assistant</span>
+            </div>
+            <div id="messages" class="messages">
+                <div class="welcome-screen" id="welcomeScreen">
+                    <h1>Welcome to ChatBot Framework</h1>
+                    <p>Choose a personality and start chatting!</p>
+                    <div class="suggestions" id="suggestions"></div>
                 </div>
-                <button class="btn-new" id="newChatBtn">+ New Chat</button>
             </div>
-        </header>
-
-        <div class="chat-body" id="chatBody">
-            <div class="welcome-screen" id="welcomeScreen">
-                <div class="welcome-icon">🤖</div>
-                <h2>How can I help you today?</h2>
-                <p>Select a model and start chatting. Powered by MiMo V2.5 and other leading LLMs.</p>
-                <div class="quick-prompts">
-                    <button class="quick-btn" data-prompt="Explain quantum computing in simple terms">Explain quantum computing</button>
-                    <button class="quick-btn" data-prompt="Write a Python function to sort a list">Write a sort function</button>
-                    <button class="quick-btn" data-prompt="What are the best practices for API design?">API design tips</button>
-                    <button class="quick-btn" data-prompt="Summarize the key ideas of machine learning">ML summary</button>
-                </div>
+            <div id="typingIndicator" class="typing-indicator hidden">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
             </div>
-        </div>
-
-        <div class="chat-input-area">
-            <div class="input-wrapper">
-                <textarea id="chatInput" placeholder="Type your message..." rows="1"></textarea>
-                <button class="btn-send" id="sendBtn">
-                    <span class="send-icon">➤</span>
-                </button>
-            </div>
-            <div class="input-footer">
-                <span class="model-badge" id="modelBadge">MiMo V2.5</span>
-                <span class="char-count" id="charCount">0 chars</span>
-            </div>
-        </div>
+            <form id="chatForm" class="chat-input-area">
+                <textarea id="userInput" placeholder="Type your message..." rows="1"></textarea>
+                <button type="submit" id="sendBtn">➤</button>
+            </form>
+        </main>
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>
